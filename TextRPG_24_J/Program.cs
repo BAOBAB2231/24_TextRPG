@@ -12,6 +12,7 @@ namespace TextRPG_24_J
         {
             //CreatePlayer();
             Battle.SetQuestClass(board, quest);
+            Skills.SetQuestClass(board, quest);
 
             while (true)
             {

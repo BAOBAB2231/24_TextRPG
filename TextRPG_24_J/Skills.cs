@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,15 @@ namespace TextRPG_24_J
         public SkillType Type { get; set; }
 
         public int HealAmount { get; set; }
+
+        static QuestBoard? board;
+        static QuestUI? quest;
+
+        public static void SetQuestClass(QuestBoard _board, QuestUI _quest)
+        {
+            board = _board;
+            quest = _quest;
+        }
 
         public Skills(string name, int mpCost, string description, float damageMultiplier, SkillType type, int numberofTargets = 1, int healAmount = 0)
         {
@@ -152,9 +162,18 @@ namespace TextRPG_24_J
             // 데미지 계산 및 적용
             int skillDamage = (int)(player.Attack * skill.DamageMultiplier);
             target.Hp -= skillDamage;
-            if (target.Hp < 0) target.Hp = 0;
+            if (target.Hp < 0)
+            {
+                target.Hp = 0;
+                if (target.Name == "미니언" && board?.QuestList[0].IsQuestAccept == true)
+                {
+                    if (quest != null)
+                        quest.QuestMonster["미니언"]++;
+                }
+                target.Hp = 0;
+            }
 
-            Console.WriteLine($"{skill.Name} 스킬로 {target.Name}을(를) 공격했습니다! [데미지: {skillDamage}]");
+                Console.WriteLine($"{skill.Name} 스킬로 {target.Name}을(를) 공격했습니다! [데미지: {skillDamage}]");
             Thread.Sleep(1000);
             return true;
         }
@@ -188,6 +207,11 @@ namespace TextRPG_24_J
             {
                 mon.Hp -= skillDamage;
                 if (mon.Hp < 0) mon.Hp = 0;
+                if (mon.Name == "미니언" && board?.QuestList[0].IsQuestAccept == true)
+                {
+                    if (quest != null)
+                        quest.QuestMonster["미니언"]++;
+                }
                 Console.WriteLine($"{mon.Name}에게 {skillDamage}의 데미지를 입혔습니다!");
             }
 
