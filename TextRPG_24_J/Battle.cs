@@ -11,18 +11,22 @@ namespace TextRPG_24_J
         public int MaxHp { get; set; }
         public int Hp { get; set; }
         public int Attack { get; set; }
+        public int Gold { get; set; }
+        public Item Dropitem { get; set; }
         public float CritRate { get; set; } = 0.15f; // 치명타 확률 (기본값 : 15%)
         public float CritMultiplier { get; set; } = 1.6f; // 치명타 배율 (기본값 : 160%)
         public float Evasion { get; set; } = 0.1f; // 회피 확률 (기본값 : 10%)
         public bool IsDead => Hp <= 0;
 
-        public Monster(string name, int level, int hp, int atk)
+        public Monster(string name, int level, int hp, int atk, int gold, Item dropitem)
         {
             Name = name;
             Level = level;
             MaxHp = hp;
             Hp = hp;
             Attack = atk;
+            Gold = gold;
+            Dropitem = dropitem;
         }
     }
 
@@ -53,13 +57,13 @@ namespace TextRPG_24_J
                 switch (type)
                 {
                     case 0:
-                        monsters.Add(new Monster("미니언", 2, 15, 5));
+                        monsters.Add(new Monster("미니언", 2, 15, 5, 50, Shop.shopItems[2]));
                         break;
                     case 1:
-                        monsters.Add(new Monster("공허충", 3, 10, 9));
+                        monsters.Add(new Monster("공허충", 3, 10, 9, 100, Shop.shopItems[5]));
                         break;
                     case 2:
-                        monsters.Add(new Monster("대포미니언", 5, 25, 8));
+                        monsters.Add(new Monster("대포미니언", 5, 25, 8, 200, Shop.shopItems[0]));
                         break;
                 }
             }
@@ -158,7 +162,17 @@ namespace TextRPG_24_J
                         Console.WriteLine("Battle!! - Result\n");
                         Console.WriteLine("Victory\n");
                         Console.WriteLine($"던전에서 몬스터 {monsters.Count}마리를 잡았습니다.\n");
-                        Console.WriteLine($"Lv.{player.Level} {player.Name}\nHP 100 -> {player.HP}\n");
+                        int recoveredMana = 10;
+                        player.CurrentMana += recoveredMana;
+                        if (player.CurrentMana > player.MaxMana)
+                        {
+                            player.CurrentMana = player.MaxMana;
+                        }
+                        Console.WriteLine($"MP를 {recoveredMana} 회복합니다.\n");
+                        Console.WriteLine($"Lv.{player.Level} {player.Name}\nHP 100 -> {player.HP}");
+                        Console.WriteLine($"Lv.{player.Level} {player.Name}\nMP {player.CurrentMana - recoveredMana} ->  {player.CurrentMana}\n");
+                        DropItem dropItem = new DropItem();
+                        dropItem.Reward(player, monsters);
                         Console.WriteLine("0. 다음\n>> ");
                         Console.ReadLine();
                         return;
@@ -265,6 +279,8 @@ namespace TextRPG_24_J
                         Console.WriteLine($"MP를 {recoveredMana} 회복합니다.\n");
                         Console.WriteLine($"Lv.{player.Level} {player.Name}\nHP 100 -> {player.HP}");
                         Console.WriteLine($"Lv.{player.Level} {player.Name}\nMP {player.CurrentMana - recoveredMana} ->  {player.CurrentMana}\n");
+                        DropItem dropItem = new DropItem();
+                        dropItem.Reward(player, monsters);
                         Console.WriteLine("0. 다음\n>> ");
                         Console.ReadLine();
                         return;                                       
