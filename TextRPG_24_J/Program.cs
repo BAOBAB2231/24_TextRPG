@@ -12,6 +12,7 @@ namespace TextRPG_24_J
         {
             //CreatePlayer();
             Battle.SetQuestClass(board, quest);
+            Skills.SetQuestClass(board, quest);
 
             Console.WriteLine("");
             Console.WriteLine("----- 스파르타 던전 -----");
