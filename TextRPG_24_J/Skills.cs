@@ -206,11 +206,14 @@ namespace TextRPG_24_J
             foreach (var mon in targets)
             {
                 mon.Hp -= skillDamage;
-                if (mon.Hp < 0) mon.Hp = 0;
-                if (mon.Name == "미니언" && board?.QuestList[0].IsQuestAccept == true)
+                if (mon.Hp < 0)
                 {
-                    if (quest != null)
-                        quest.QuestMonster["미니언"]++;
+                    mon.Hp = 0;
+                    if (mon.Name == "미니언" && board?.QuestList[0].IsQuestAccept == true)
+                    {
+                        if (quest != null)
+                            quest.QuestMonster["미니언"]++;
+                    }
                 }
                 Console.WriteLine($"{mon.Name}에게 {skillDamage}의 데미지를 입혔습니다!");
             }
