@@ -6,6 +6,9 @@
         public string Job { get; }
         public int Level { get; set; }
         public int BaseAttack { get; set; }
+        public float CritRate { get; set; } = 0.15f; // 치명타 확률 (기본값 : 15%)
+        public float CritMultiplier { get; set; } = 1.6f; // 치명타 배율 (기본값 : 160%)
+        public float Evasion { get; set; } = 0.1f; // 회피 확률 (기본값 : 10%)
         public int BaseDefense { get; set; }
         public int HP { get; set; }
         public int MaxMana { get; set; }  // 최대 마나
@@ -89,6 +92,9 @@
             Console.WriteLine($"Lv. {Level:D2}");
             Console.WriteLine($"{Name} ( {Job} )");
             Console.WriteLine($"공격력 : {Attack}");
+            Console.WriteLine($"치명타 확률 : {(CritRate * 100):F0}%");
+            Console.WriteLine($"치명타 피해 : {(CritMultiplier * 100):F0}%");
+            Console.WriteLine($"회피율 : {(Evasion * 100):F0}%");
             Console.WriteLine($"방어력 : {Defense}");
             Console.WriteLine($"체  력 : {HP}");
             Console.WriteLine($"마  나 : {CurrentMana}");
