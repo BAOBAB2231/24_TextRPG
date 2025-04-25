@@ -13,6 +13,47 @@ namespace TextRPG_24_J
             //CreatePlayer();
             Battle.SetQuestClass(board, quest);
 
+            Console.WriteLine("");
+            Console.WriteLine("----- 스파르타 던전 -----");
+            Console.WriteLine();
+            Console.WriteLine("1. 시작하기");
+            Console.WriteLine("2. 종료하기");
+            Console.WriteLine();
+            Console.Write("원하는 작업을 선택하세요>>  ");
+
+            string title = Console.ReadLine();
+
+            switch (title)
+            {
+                case "1":
+                    Console.Clear();
+                    Console.WriteLine("\n--- 캐릭터 생성 ---\n");
+
+
+                    Console.Write("이름을 입력하세요: ");
+                    string name = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(name))
+                        name = "이름없음";
+
+
+                    player = new Player(name, "전사", 1, 10, 5, 100, 5000);
+
+
+                    Console.WriteLine($"\n{name} 캐릭터가 생성되었습니다!");
+                    Console.WriteLine("아무 키나 누르면 계속합니다...");
+                    Console.ReadKey();
+                    break;
+                case "2":
+
+                    Console.WriteLine("게임을 종료합니다.");
+                    return;
+                default:
+                    Console.WriteLine("잘못된 입력입니다. 아무 키나 눌러 다시 시도하세요.");
+                    Console.ReadKey();
+                    return; // 현재 장면 유지
+            }
+
+
             while (true)
             {
                 Console.Clear();
