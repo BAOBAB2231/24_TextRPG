@@ -1,0 +1,15 @@
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\bin\Debug\net8.0\TextRPG_24_J.exe
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\bin\Debug\net8.0\TextRPG_24_J.deps.json
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\bin\Debug\net8.0\TextRPG_24_J.runtimeconfig.json
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\bin\Debug\net8.0\TextRPG_24_J.dll
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\bin\Debug\net8.0\TextRPG_24_J.pdb
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\obj\Debug\net8.0\TextRPG_24_J.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\obj\Debug\net8.0\TextRPG_24_J.AssemblyInfoInputs.cache
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\obj\Debug\net8.0\TextRPG_24_J.AssemblyInfo.cs
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\obj\Debug\net8.0\TextRPG_24_J.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\obj\Debug\net8.0\TextRPG_24_J.sourcelink.json
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\obj\Debug\net8.0\TextRPG_24_J.dll
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\obj\Debug\net8.0\refint\TextRPG_24_J.dll
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\obj\Debug\net8.0\TextRPG_24_J.pdb
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\obj\Debug\net8.0\TextRPG_24_J.genruntimeconfig.cache
+C:\Users\USER\Documents\GitHub\TextRPG_24\TextRPG_24_J\TextRPG_24_J\obj\Debug\net8.0\ref\TextRPG_24_J.dll
