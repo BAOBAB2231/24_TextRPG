@@ -171,6 +171,25 @@ namespace TextRPG_24_J
                         Console.WriteLine($"MP를 {recoveredMana} 회복합니다.\n");
                         Console.WriteLine($"Lv.{player.Level} {player.Name}\nHP 100 -> {player.HP}");
                         Console.WriteLine($"Lv.{player.Level} {player.Name}\nMP {player.CurrentMana - recoveredMana} ->  {player.CurrentMana}\n");
+                        int expGain = 0;
+                        foreach (var m in monsters)
+                        {
+                            switch (m.Name)
+                            {
+                                case "미니언": expGain += 10; break;
+                                case "공허충": expGain += 25; break;
+                                case "대포미니언": expGain += 40; break;
+                            }
+                        }
+                        //레벨업 
+                        player.Exp += expGain;
+                        int needExp;
+                        needExp = player.Level - 1;
+                        needExp = needExp * 40;
+                        if (needExp <= 0)
+                            needExp = 40;
+                        Console.WriteLine($"획득 경험치 : {expGain} (현재 {player.Exp}/다음 {needExp})");
+                        player.CheckLevelUp();
                         DropItem dropItem = new DropItem();
                         dropItem.Reward(player, monsters);
                         Console.WriteLine("0. 다음\n>> ");
@@ -266,6 +285,8 @@ namespace TextRPG_24_J
                     // 모든 몬스터가 죽었는지 확인
                     if (monsters.All(m => m.IsDead))
                     {
+                        
+
                         Console.Clear();
                         Console.WriteLine("Battle!! - Result\n");
                         Console.WriteLine("Victory\n");
@@ -279,6 +300,27 @@ namespace TextRPG_24_J
                         Console.WriteLine($"MP를 {recoveredMana} 회복합니다.\n");
                         Console.WriteLine($"Lv.{player.Level} {player.Name}\nHP 100 -> {player.HP}");
                         Console.WriteLine($"Lv.{player.Level} {player.Name}\nMP {player.CurrentMana - recoveredMana} ->  {player.CurrentMana}\n");
+                        int expGain = 0;
+                        foreach (var m in monsters)
+                        {
+                            switch (m.Name)
+                            {
+                                case "미니언": expGain += 10; break;
+                                case "공허충": expGain += 25; break;
+                                case "대포미니언": expGain += 40; break;
+                            }
+                        }
+                        // 레벨업
+
+                        player.Exp += expGain;
+                        int needExp;
+                        needExp = player.Level - 1;
+                        needExp = needExp * 40;
+                        if (needExp <= 0)
+                            needExp = 40;
+                        Console.WriteLine($"획득 경험치 : {expGain} (현재 {player.Exp}/다음 {needExp})");
+                        player.CheckLevelUp();
+
                         DropItem dropItem = new DropItem();
                         dropItem.Reward(player, monsters);
                         Console.WriteLine("0. 다음\n>> ");
