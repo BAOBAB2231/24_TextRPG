@@ -24,7 +24,7 @@ namespace TextRPG_24_J
                 }
             }
             player.Gold += goldToAdd;
-            Console.WriteLine($"{goldToAdd} Gold");
+            Console.WriteLine($"획득 골드: {goldToAdd} G  (현재 골드: {player.Gold} G)");
 
 
         }
