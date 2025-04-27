@@ -7,7 +7,7 @@ namespace TextRPG_24_J
     {
         static Player player = new Player("Chad", "전사", 1, 100, 5, 100, 5000);
         static QuestBoard board = new QuestBoard(player, Shop.shopItems);
-        static QuestUI quest = new QuestUI(board);
+        static QuestUI quest = new QuestUI(board, player);
         static void Main(string[] args)
         {
             //CreatePlayer();

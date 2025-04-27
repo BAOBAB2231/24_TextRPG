@@ -13,7 +13,7 @@ namespace TextRPG_24_J
     {
         public string QuestTitle { get; set; }
         public string QuestDescription { get; set; }
-        public bool IsDone { get; set; }
+        public bool IsDone => QuestState == QuestComplete;
         public List<Item> QuestReward { get; set; }
         public int Gold { get; set; }
         public string QuestRequest { get; set; }
@@ -113,9 +113,11 @@ namespace TextRPG_24_J
     public class QuestUI
     {
         QuestBoard board;
-        public QuestUI(QuestBoard board)
+        Player player;
+        public QuestUI(QuestBoard board, Player player)
         {
             this.board = board;
+            this.player = player;
         }
 
         public Dictionary<string, int> QuestMonster = new Dictionary<string, int>();
@@ -190,7 +192,7 @@ namespace TextRPG_24_J
                 }
                 else if (input == "2")
                 {
-
+                    ReceiveReward(quest);
                     break;
                 }
                 else if (input == "0")
@@ -262,6 +264,24 @@ namespace TextRPG_24_J
         }
 
 
+        public void ReceiveReward(Quest quest)
+        {
+            if (quest.IsDone)
+            {
+                player.Gold += quest.Gold;
+                for (int i = 0; i < quest.QuestReward.Count; i++)
+                Inventory.Add(quest.QuestReward[i]);
+                quest.IsQuestAccept = false;
+                quest.QuestState = 0;
+                Console.WriteLine($"보상으로 {quest.Gold}G 골드를 받고, {quest.QuestReward}를 획득했습니다!");
+                Pause();
+            }
+            else
+            {
+                Console.WriteLine("퀘스트가 완료되지 않았습니다!");
+                Pause();
+            }
+        }
 
         void Pause()
         {
