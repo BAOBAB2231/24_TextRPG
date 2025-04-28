@@ -115,20 +115,7 @@ namespace TextRPG_24_J
             Console.Clear();
             player.ShowStatus();
 
-            while (true)
-            {
-                Console.WriteLine("0. 나가기");
-                Console.Write("원하시는 행동을 입력해주세요: ");
-                string input = Console.ReadLine().Trim();
-                if (input == "0")
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("\n잘못된 입력입니다.\n");
-                }
-            }
+            
         }
 
         static void Pause()

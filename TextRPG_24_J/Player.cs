@@ -117,6 +117,15 @@ namespace TextRPG_24_J
             {
                 Console.WriteLine("잘못된 입력입니다. 0을 눌러 나가세요.");
                 Console.Write(">> ");
+                string input = Console.ReadLine().Trim();
+                if (input == "0")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("\n잘못된 입력입니다.\n");
+                }
             }
         }
 
