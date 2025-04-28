@@ -12,7 +12,7 @@ namespace TextRPG_24_J
         {
             int goldToAdd = 0;
 
-            Console.WriteLine("[회득 아이템]");
+            Console.WriteLine("[획득 아이템]");
             for (int i = 0; i < monsters.Count; i++)
             {
                 Monster monster = monsters[i];
