@@ -264,7 +264,7 @@ namespace TextRPG_24_J
         }
 
 
-        public void ReceiveReward(Quest quest)
+        void ReceiveReward(Quest quest)
         {
             if (quest.IsDone)
             {
@@ -273,7 +273,10 @@ namespace TextRPG_24_J
                 Inventory.Add(quest.QuestReward[i]);
                 quest.IsQuestAccept = false;
                 quest.QuestState = 0;
-                Console.WriteLine($"보상으로 {quest.Gold}G 골드를 받고, {quest.QuestReward}를 획득했습니다!");
+                Console.Write($"보상으로 {quest.Gold}G 골드를 받고, ");
+                for (int i = 0; i < quest.QuestReward.Count; i++)
+                    Console.Write($"{quest.QuestReward[i].Name} ");
+                Console.Write($"를 획득했습니다!");
                 Pause();
             }
             else
